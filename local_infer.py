@@ -8,6 +8,8 @@ by Burhan Ul tayyab and Nicholas Chua
 """
 
 from model import GPT2PPL
+from collections import OrderedDict
+import json
 
 # initialize the model
 model = GPT2PPL()
@@ -21,4 +23,14 @@ while True:
     contents.append(line)
 sentence = "\n".join(contents)
 
-model(sentence)
+result = model(sentence)
+
+# Convert the result to a JSON object
+json_result = {
+    "metrics": dict(result[0]),
+    "conclusion": result[1]
+}
+
+# Print the JSON object
+print("JSON result:")
+print(json.dumps(json_result, indent=2))

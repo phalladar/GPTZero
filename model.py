@@ -14,7 +14,7 @@ from collections import OrderedDict
 
 
 class GPT2PPL:
-    def __init__(self, device="cuda", model_id="gpt2"):
+    def __init__(self, device="cuda", model_id="gpt2"):  # Default set to "cuda"
         self.device = device
         self.model_id = model_id
         self.model = GPT2LMHeadModel.from_pretrained(model_id).to(device)
